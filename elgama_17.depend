@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1750148974 source:c:\users\khact\desktop\atbmtt\elgama_17\main.cpp
+	<iostream>
+	<cmath>
+	<cstdlib>
+
