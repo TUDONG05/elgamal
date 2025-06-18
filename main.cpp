@@ -75,15 +75,17 @@ int main()
     cout<<"khoa cong khai y="<<y<<endl;
 
     //nhap ban ro m
-    do
-    {
-        cout<<"nhap ban ro m(0<m<p):";
-        cin>>m;
-
-    }
-    while (m<=0 || m>=p);
-
+   // do
+   // {
+    //    cout<<"nhap ban ro m(0<m<p):";
+   //     cin>>m;
+//
+  //  }
+   // while (m<=0 || m>=p);
     //nhap k ngau nhien
+
+
+
     do
     {
         cout<<"Nhap so ngau nhien k (1<k<p-1):";
@@ -91,11 +93,29 @@ int main()
     }
     while (k<=1 || k>=p-1);
 
-    //ma hoa
+
+   string s;
+   cin.ignore();
+   cout<<"nhap thong diep:";
+   getline(cin,s);
+
+   vector <int > day;
+   for(char m:s)
+        day.push_back(int(m));
+
+
+
+
+    vector<pair<long long , long long>> banMo;
+    vector<long long> banRo;
+
+    for(int m:day)
+    {
+         //ma hoa
     long long c1 = power(g,k,p);
     long long c2 =(m*power(y,k,p))%p;
 
-    cout<<"Ban ma thu duoc (c1,c2)=("<<c1<<","<<c2<<")"<<endl;
+    banMo.push_back({c1,c2});
 
     //giai ma
     long long s = power(c1,x,p);
@@ -106,7 +126,18 @@ int main()
         return 1;
     }
 
-    long long banro = (c2*s_1)%p;
-    cout<<"ban ro thu duoc:"<<banro<<endl;
+    long long giaiMa = (c2*s_1)%p;
+    banRo.push_back(giaiMa);
+    }
+    cout << "\nCac cap (c1, c2) sau khi ma hoa:\n";
+    for (auto &c : banMo)
+    cout << "(" << c.first << ", " << c.second << ") ";
+    cout << endl;
+
+    cout << "\nBan ro sau khi giai ma:\n";
+    for (long long val : banRo)
+    cout << char(val);
+    cout << endl;
+
 
 }
